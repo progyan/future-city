@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/drone.png" type="Texture" id=1]
+[ext_resource path="res://assets/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/salad.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Lobby.gd" type="Script" id=4]
+[ext_resource path="res://assets/robots.png" type="Texture" id=5]
+[ext_resource path="res://assets/roguelikeChar_transparent.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 2 )
+
+[node name="Lobby" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="BG" type="ColorRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 0.25098, 0.611765, 0.384314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_top = 2.82843
+margin_right = 1920.0
+margin_bottom = 1182.83
+rect_min_size = Vector2( 1920, 1080 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CenterContainer"]
+margin_left = 304.0
+margin_top = 437.0
+margin_right = 1616.0
+margin_bottom = 743.0
+rect_min_size = Vector2( 1312, 306 )
+custom_fonts/font = SubResource( 1 )
+text = "Начать игру"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Robots" type="Sprite" parent="."]
+position = Vector2( 446.303, 375.601 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 5 )
+
+[node name="A" type="Sprite" parent="Robots"]
+position = Vector2( -8.5, 1 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 154, 0, 16, 16 )
+
+[node name="B" type="Sprite" parent="Robots"]
+position = Vector2( 8.5, 1 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 222, 0, 16, 16 )
+
+[node name="Salad" type="Sprite" parent="."]
+position = Vector2( 1474.85, 382.862 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 3 )
+
+[node name="Drone" type="Sprite" parent="."]
+position = Vector2( 556.832, 224.448 )
+rotation = -0.523599
+scale = Vector2( 8, 8 )
+texture = ExtResource( 1 )
+
+[node name="Sk" type="Label" parent="."]
+margin_left = 560.0
+margin_top = 250.0
+margin_right = 1360.0
+margin_bottom = 353.0
+custom_fonts/font = SubResource( 2 )
+text = "#skkidschallenge
+#городбудущего"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CenterContainer/Button" to="." method="_on_Button_pressed"]

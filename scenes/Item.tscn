@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/greenies.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Item.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = 2
+font_data = ExtResource( 1 )
+
+[node name="Item" type="TextureRect"]
+margin_right = 160.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 160, 160 )
+texture = ExtResource( 2 )
+expand = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quantity" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 160, 160 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="gui_input" from="." to="." method="_on_Item_gui_input"]

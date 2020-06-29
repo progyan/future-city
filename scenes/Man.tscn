@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/roguelikeChar_transparent.png" type="Texture" id=1]
+[ext_resource path="res://assets/burger.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Man.gd" type="Script" id=3]
+[ext_resource path="res://assets/emotes/emote__.png" type="Texture" id=4]
+[ext_resource path="res://assets/pop.png" type="Texture" id=6]
+
+[sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/emote_star.png-ca66d33d530fa1bbf5842ad390c1e122.stex"
+
+[sub_resource type="Animation" id=1]
+resource_name = "pop"
+length = 0.4
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="Man" type="Sprite"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 16 )
+script = ExtResource( 3 )
+
+[node name="TShirt" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 103, -1, 16, 16 )
+
+[node name="Hair" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( -103.346, 153.605, 16, 16 )
+
+[node name="Emote" type="Sprite" parent="."]
+visible = false
+position = Vector2( -9, -12 )
+z_index = 4096
+texture = SubResource( 2 )
+
+[node name="Wait" type="Timer" parent="."]
+wait_time = 11.0
+one_shot = true
+
+[node name="Say" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Want" type="Sprite" parent="."]
+position = Vector2( 0, -22 )
+scale = Vector2( 2, 2 )
+z_index = 4096
+texture = ExtResource( 4 )
+
+[node name="Food" type="Sprite" parent="Want"]
+position = Vector2( 0.0870858, -1.51646 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 2 )
+
+[node name="Pop" type="Sprite" parent="Want"]
+position = Vector2( -8.9407e-08, -1.33333 )
+z_index = -1
+texture = ExtResource( 6 )
+
+[node name="Player" type="AnimationPlayer" parent="Want/Pop"]
+anims/pop = SubResource( 1 )
+[connection signal="timeout" from="Wait" to="." method="_on_Wait_timeout"]
+[connection signal="timeout" from="Say" to="." method="_on_Say_timeout"]
