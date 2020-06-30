@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scenes/TMP.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 200
+extra_spacing_top = 30
+font_data = ExtResource( 1 )
+
+[node name="TMP" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+custom_fonts/font = SubResource( 1 )
+text = "ГОРОД БУДУЩЕГО"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

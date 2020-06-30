@@ -6,11 +6,9 @@
 [ext_resource path="res://assets/emotes/emote__.png" type="Texture" id=4]
 [ext_resource path="res://assets/pop.png" type="Texture" id=6]
 
-[sub_resource type="StreamTexture" id=2]
-load_path = "res://.import/emote_star.png-ca66d33d530fa1bbf5842ad390c1e122.stex"
+[sub_resource type="StreamTexture" id=1]
 
-[sub_resource type="Animation" id=1]
-resource_name = "pop"
+[sub_resource type="Animation" id=2]
 length = 0.4
 loop = true
 step = 0.2
@@ -47,7 +45,7 @@ region_rect = Rect2( -103.346, 153.605, 16, 16 )
 visible = false
 position = Vector2( -9, -12 )
 z_index = 4096
-texture = SubResource( 2 )
+texture = SubResource( 1 )
 
 [node name="Wait" type="Timer" parent="."]
 wait_time = 11.0
@@ -57,6 +55,7 @@ one_shot = true
 wait_time = 3.0
 
 [node name="Want" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, -22 )
 scale = Vector2( 2, 2 )
 z_index = 4096
@@ -73,6 +72,6 @@ z_index = -1
 texture = ExtResource( 6 )
 
 [node name="Player" type="AnimationPlayer" parent="Want/Pop"]
-anims/pop = SubResource( 1 )
+anims/pop = SubResource( 2 )
 [connection signal="timeout" from="Wait" to="." method="_on_Wait_timeout"]
 [connection signal="timeout" from="Say" to="." method="_on_Say_timeout"]

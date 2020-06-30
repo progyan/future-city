@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/greenies.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Item.gd" type="Script" id=3]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 64
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
@@ -15,6 +15,7 @@ font_data = ExtResource( 1 )
 margin_right = 160.0
 margin_bottom = 160.0
 rect_min_size = Vector2( 160, 160 )
+mouse_default_cursor_shape = 2
 texture = ExtResource( 2 )
 expand = true
 script = ExtResource( 3 )
@@ -26,10 +27,26 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 160, 160 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+show_behind_parent = true
+margin_top = -8.0
+margin_right = 160.0
+margin_bottom = 152.0
+mouse_filter = 2
+color = Color( 0.568627, 0.568627, 0.568627, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="gui_input" from="." to="." method="_on_Item_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_Item_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Item_mouse_exited"]
+[connection signal="mouse_entered" from="ColorRect" to="." method="_on_ColorRect_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect" to="." method="_on_ColorRect_mouse_exited"]

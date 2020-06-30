@@ -7,6 +7,7 @@ export var dump = false
 export var top = false
 var saying = false
 var waiting_order = false
+export var real = true
 
 func make_order():
 	pass
@@ -22,21 +23,23 @@ func emotion(e):
 		m = ["faceHappy", "heart"]
 		$Say.start()
 		#game.dequeue(qu)
-		game.review(true)
-		if dump:
-			happy = false
-			$AnimationPlayer.play("change")
+		if real:
+			game.review(true)
+			if dump:
+				happy = false
+				$AnimationPlayer.play("change")
 	elif e == -1:
 		$Want.hide()
 		#print("cba")
 		$Emote.show()
 		m = ["faceAngry", "faceSad", "heartBroken"]
 		$Say.start()
-		saying = true
-		game.dequeue(qu)
-		game.review(false)
-		happy = false
-		$AnimationPlayer.play("change")
+		if real:
+			saying = true
+			game.dequeue(qu)
+			game.review(false)
+			happy = false
+			$AnimationPlayer.play("change")
 	elif e == 0 and happy and not saying and not waiting_order:
 		print("abc")
 		$Emote.hide()
@@ -44,12 +47,14 @@ func emotion(e):
 		m = ["_"]
 		var d = ["bread", "burger", "salad", "sandwich", "tomato", "greenies"]
 		var i = d[randi() % len(d)]
-		qu = game.queue(self, i)
-		waiting_order = true
+		if real:
+			qu = game.queue(self, i)
+			waiting_order = true
 		$Want/Food.texture = load("res://assets/" + i + ".png")
 		$Wait.start()
 		$Say.start()
-		saying = true
+		if real:
+			saying = true
 	else:
 		$Emote.hide()
 		$Want.hide()
@@ -85,7 +90,8 @@ func _ready():
 		$Want/Food.flip_v = true
 
 func _on_Wait_timeout():
-	emotion(-1)
+	if real:
+		emotion(-1)
 
 func _on_Say_timeout():
 	saying = false

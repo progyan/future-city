@@ -41,6 +41,7 @@ margin_top = 437.0
 margin_right = 1616.0
 margin_bottom = 743.0
 rect_min_size = Vector2( 1312, 306 )
+mouse_default_cursor_shape = 2
 custom_fonts/font = SubResource( 1 )
 text = "Начать игру"
 __meta__ = {
@@ -84,6 +85,14 @@ custom_fonts/font = SubResource( 2 )
 text = "#skkidschallenge
 #городбудущего"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Benj" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Music from www.bensound.com"
 __meta__ = {
 "_edit_use_anchors_": false
 }
